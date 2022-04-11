@@ -2,13 +2,9 @@
 // Crie o formulário que será usado para adicionar cartas ao baralho
 // .
 // Crie um formulário que será utilizado para criar as cartas do seu baralho.
-
 // Crie um componente chamado Form dentro da pasta src/components.
-
 // Renderize o componente Form dentro do componente principal App.
-
 // Crie os seguintes itens dentro do component Form:
-
 // bulb Dica: Você pode criar um componente de input. Lembre-se de sempre ter uma
 // label associada para cada input.
 
@@ -40,7 +36,97 @@
 // um campo do tipo checkbox que contenha o atributo data-testid="trunfo-input".
 // Este campo será usado para inserir se a carta é o Super Trunfo.
 
-// um buttonque contenha o atributo data-testid="save-button" e que tenha o texto "Salvar".
+// um button que contenha o atributo data-testid="save-button" e que tenha o texto "Salvar".
+
+import React from 'react';
+// import PropTypes from 'prop-types';
+
+class Form extends React.Component {
+  render() {
+    // const { seiLa } = this.props;
+    return (
+      <div>
+        <form>
+          <label htmlFor="card-name">
+            Nome
+            <input
+              name="card-name"
+              type="text"
+              placeholder="Nome da Carta"
+              data-testid="name-input"
+            />
+          </label>
+          <label htmlFor="card-description">
+            Descrição
+            <textarea
+              name="card-description"
+              placeholder="Descrição da Carta"
+              data-testid="description-input"
+            />
+          </label>
+          <label htmlFor="card-attr1">
+            Attr01
+            <input
+              name="card-attr1"
+              type="number"
+              placeholder="Atributo 1"
+              data-testid="attr1-input"
+            />
+          </label>
+          <label htmlFor="card-attr2">
+            Attr02
+            <input
+              name="card-attr2"
+              type="number"
+              placeholder="Atributo 2"
+              data-testid="attr2-input"
+            />
+          </label>
+          <label htmlFor="card-attr3">
+            Attr03
+            <input
+              name="card-attr3"
+              type="number"
+              placeholder="Atributo 3"
+              data-testid="attr3-input"
+            />
+          </label>
+          <label htmlFor="card-img">
+            Imagem
+            <input
+              name="card-img"
+              type="text"
+              placeholder="URL da imagem"
+              data-testid="image-input"
+            />
+          </label>
+          <label htmlFor="raridade">
+            Raridade
+            <select name="raridade" data-testid="rare-input">
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
+            </select>
+          </label>
+          <label htmlFor="trunfo">
+            <input
+              name="trunfo"
+              type="checkbox"
+              data-testid="trunfo-input"
+            />
+            Super Trybe Trunfo
+          </label>
+          <button type="button" data-testid="save-button">Salvar</button>
+        </form>
+      </div>
+    );
+  }
+}
+// Form.propTypes = {
+//   headline: PropTypes.string.isRequired,
+// };
+
+export default Form;
 
 // .
 
