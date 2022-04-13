@@ -56,7 +56,7 @@ class App extends React.Component {
     const checkAttr1 = Number(cardAttr1) >= 0 && Number(cardAttr1) <= maxAttr;
     const checkAttr2 = Number(cardAttr2) >= 0 && Number(cardAttr2) <= maxAttr;
     const checkAttr3 = Number(cardAttr3) >= 0 && Number(cardAttr3) <= maxAttr;
-    // this.setState({isSaveButtinDisabled: false})
+    // this.setState({isSaveButtinDisabled: false}) // setar isso
     if (
       checkName
       && checkDescription
