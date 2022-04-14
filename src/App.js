@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       // hasTrunfo,
       isSaveButtonDisabled: true,
+      // savedDeck: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -29,13 +30,49 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-    console.log('eita');
+    // return console.log('eita');
+
+    // const { cardName, cardDescription, cardAttr1 } = this.state;
+    // const { cardAttr2, cardAttr3, cardImage } = this.state;
+    // const { cardRare, cardTrunfo } = this.state;
+    // const { savedDeck } = this.state;
+
+    // const newCard = {
+    //   cardName,
+    //   cardDescription,
+    //   cardAttr1,
+    //   cardAttr2,
+    //   cardAttr3,
+    //   cardImage,
+    //   cardRare,
+    //   cardTrunfo,
+    //   // hasTrunfo,
+    // };
+
+    // savedDeck.push(newCard);
+    // this.setState((prevState) => ({
+    //   savedDeck: [...prevState.savedDeck, newCard],
+    // }));
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      // hasTrunfo,
+      isSaveButtonDisabled: true,
+      // savedDeck,
+    });
   }
 
   verifyInputs() {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage } = this.state;
-    const { cardRare } = this.state;
+    // const { cardRare } = this.state;
     // verifica
     // nome.length !== 0
     // descricao.length !== 0
@@ -44,7 +81,7 @@ class App extends React.Component {
     const checkName = cardName.length > 0;
     const checkDescription = cardDescription.length > 0;
     const checkImage = cardImage.length > 0;
-    const checkRarity = cardRare.length > 0;
+    // const checkRarity = cardRare.length > 0;
 
     // attr1 + attr2 + attr3 <= 210
     const maxSum = 211;
@@ -61,7 +98,7 @@ class App extends React.Component {
       checkName
       && checkDescription
       && checkImage
-      && checkRarity
+      // && checkRarity
       && checkSumAttrs
       && checkAttr1
       && checkAttr2
@@ -92,6 +129,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
