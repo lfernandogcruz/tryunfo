@@ -114,36 +114,55 @@ class App extends React.Component {
     const { cardName, cardDescription, cardAttr1 } = this.state;
     const { cardAttr2, cardAttr3, cardImage } = this.state;
     const { cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
-    const { hasTrunfo } = this.state;
+    const { hasTrunfo, savedDeck } = this.state;
 
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          onInputChange={ this.onInputChange }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-      </div>
+      <section>
+        <div>
+          <h1>Tryunfo</h1>
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            onInputChange={ this.onInputChange }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+        <div>
+          {
+            savedDeck.map((elCard) => (
+              <Card
+                key={ elCard.cardName }
+                cardName={ elCard.cardName }
+                cardDescription={ elCard.cardDescription }
+                cardAttr1={ elCard.cardAttr1 }
+                cardAttr2={ elCard.cardAttr2 }
+                cardAttr3={ elCard.cardAttr3 }
+                cardImage={ elCard.cardImage }
+                cardRare={ elCard.cardRare }
+                cardTrunfo={ elCard.cardTrunfo }
+              />
+            ))
+          }
+        </div>
+      </section>
     );
   }
 }
