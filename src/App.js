@@ -51,16 +51,19 @@ class App extends React.Component {
       savedDeck: [...prevState.savedDeck, newCard],
     }));
 
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-    }, this.verifyTrunfo);
+    this.setState(
+      {
+        cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+      },
+      this.verifyTrunfo,
+    );
   }
 
   verifyTrunfo() {
@@ -72,8 +75,7 @@ class App extends React.Component {
       })
       : this.setState({
         hasTrunfo: false,
-      })
-    ));
+      })));
   }
 
   verifyInputs() {
@@ -86,9 +88,10 @@ class App extends React.Component {
 
     const maxSum = 211;
     const maxAttr = 90;
-    const checkSumAttrs = (
-      Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)
-    ) < maxSum;
+    const cdAtt1 = Number(cardAttr1);
+    const cdAtt2 = Number(cardAttr2);
+    const cdAtt3 = Number(cardAttr3);
+    const checkSumAttrs = cdAtt1 + cdAtt2 + cdAtt3 < maxSum;
 
     const checkAttr1 = Number(cardAttr1) >= 0 && Number(cardAttr1) <= maxAttr;
     const checkAttr2 = Number(cardAttr2) >= 0 && Number(cardAttr2) <= maxAttr;
@@ -146,10 +149,9 @@ class App extends React.Component {
           />
         </div>
         <div>
-          {
-            savedDeck.map((elCard) => (
+          {savedDeck.map((elCard) => (
+            <div key={ elCard.cardName }>
               <Card
-                key={ elCard.cardName }
                 cardName={ elCard.cardName }
                 cardDescription={ elCard.cardDescription }
                 cardAttr1={ elCard.cardAttr1 }
@@ -158,9 +160,13 @@ class App extends React.Component {
                 cardImage={ elCard.cardImage }
                 cardRare={ elCard.cardRare }
                 cardTrunfo={ elCard.cardTrunfo }
+                key={ elCard.cardName }
               />
-            ))
-          }
+              <button data-testid="delete-button" key={ elCard.cardName } type="button">
+                Excluir
+              </button>
+            </div>
+          ))}
         </div>
       </section>
     );
